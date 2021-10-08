@@ -121,7 +121,7 @@ def add_holes(mask):
     return mask
 
 def generate_mask(h,w,idx):
-    number_of_block = 0 # 遮挡条的个数
+    number_of_block = 10 # 遮挡条的个数
     rs = []
     mask = np.ones((h,w)) * 255
     for i in range(number_of_block):
@@ -129,11 +129,11 @@ def generate_mask(h,w,idx):
             hor_ver_mask(h,w,mask)
         else:
             hor_ver_mask(w,h,mask,mode='ver')
-    # mask = rotate(mask)
-    # mask = dilation(mask)
-    # mask = erode(mask)
+    mask = rotate(mask)
+    mask = dilation(mask)
+    mask = erode(mask)
     mask = mask.astype('uint8')
-    #mask = add_holes(mask)
+    mask = add_holes(mask)
     mask //= 255 # 先变成int，然后整除，就可以把不是黑的比如119.5这种灰灰的，变成黑的
     # 之后因为ToTensor()那里会除以255，所以如果是全0和1的话，就会变成0.0039，到时候y_comp就会出问题
     # 所以必须在这里变成255的先
@@ -141,8 +141,7 @@ def generate_mask(h,w,idx):
     # 占很大的成分，导致y_comp看起来跟y_pred一样
     img = Image.fromarray(mask * 255).convert('1')
     #img.save('./data/mask/' + str(idx) + '.png')
-    img.save('./data/' + str(idx) + '.png')
-    #img.save('./data/mask_lightest/' + str(idx) + '.png')
+    img.save('./data/ma/' + str(idx) + '.png')
     return mask
         
 def main():
@@ -151,7 +150,7 @@ def main():
     # mask.show()
 
     rs = []
-    for i in range(1):
+    for i in range(8):
         mask = generate_mask(256,256,i)
         rs.append(calc_shadow_area(mask))
         # img = Image.fromarray(mask)
@@ -169,14 +168,7 @@ def main():
     # out.show()
     # raw_array[raw_array == 0] += 255
     # out1 = Image.fromarray(raw_array)
-    # out1.show()
-    mask = Image.open('./000008.jpg')
-    mask = np.asarray(mask)
-    print(calc_shadow_area(mask))
-    mask = Image.open('./20212.png')
-    mask = np.asarray(mask)
-    print(calc_shadow_area(mask))
-    
+    # out1.show()    
 
 if __name__ == '__main__':
     main()
