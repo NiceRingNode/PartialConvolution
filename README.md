@@ -22,8 +22,6 @@ The works of this re-implementation contains:
 
 - [x] New Mask Datasets
 
-  训练之后发现，mask的面积会影响图像修复的效果，所以本复现使用了三个不同面积的mask dataset，分别训练出三种对应的权重：
-
   After training, it is found that the area of the mask will influence the effect of image inpainting, so this re-implementation uses three mask datasets with different areas proportion and three corresponding weights were trained respectively.
 
   `checkpoint_mask_lightest_16.8.pth`
