@@ -1,8 +1,8 @@
-# PartialConvolution
+# PartialConvolution-Inpainting
 
-这是一个对[Image Inpainting for Irregular Holes Using Partial Convolutions](https://arxiv.org/abs/1804.07723)[Liu+, arXiv2018]的**非官方**复现
+This is a non-official re-implementation of article: [Image Inpainting for Irregular Holes Using Partial Convolutions](https://arxiv.org/abs/1804.07723)[Liu+, arXiv2018].
 
-官方实现在[这里](https://github.com/NVIDIA/partialconv)
+The official implementation is [here](https://github.com/NVIDIA/partialconv).
 
 # Requirements
 
@@ -16,13 +16,15 @@ python install -r requirements.txt
 
 # Work
 
-本复现包含的工作有：
+The works of this re-implementation contains:
 
 - [x] Partial Convolution Layer
 
 - [x] New Mask Datasets
 
   训练之后发现，mask的面积会影响图像修复的效果，所以本复现使用了三个不同面积的mask dataset，分别训练出三种对应的权重：
+
+  After training, it is found that the area of the mask will influence the effect of image inpainting, so this re-implementation uses three mask datasets with different areas proportion and three corresponding weights were trained respectively.
 
   `checkpoint_mask_lightest_16.8.pth`
 
@@ -42,25 +44,25 @@ python install -r requirements.txt
 
 # Test
 
-windows环境下，下载预训练权重，[提取码：jw2x](https://pan.baidu.com/s/1P93LDjkaJvnxwkm4LcnCOw )，
+In windows 10, download the pretrained weights, [Extract code：jw2x](https://pan.baidu.com/s/1P93LDjkaJvnxwkm4LcnCOw ), and clone the repository.
 
 ```
 git clone https://github.com/NiceRingNode/PartialConvolution.git
 ```
 
-打开cmd，切换到工作目录
+Then change the working directory in cmd,
 
 ```
 cd/d PartialConvolution
 ```
 
-运行test
+and run test.py using the following commands,
 
 ```shell
 python test.py
 ```
 
-或者
+or
 
 ```shell
 python test.py --batch_size 8 --pretrained_root "./weights/checkpoint_mask_lightest_16.8.pth" --dataset "mask_lightest"
@@ -72,13 +74,13 @@ python test.py --batch_size 8 --pretrained_root "./weights/checkpoint_mask_light
 python test.py --batch_size 8 --pretrained_root "./weights/checkpoint_mask_35.5.pth" --dataset "mask"
 ```
 
-在output文件夹下找到result.png，查看结果
+You can see the inpainting result on **result.png** in the **output folder**.
 
 # Train
 
 ## Preprocess
 
-下载数据集[Places2](http://places2.csail.mit.edu/download.html)，放到data文件夹下，目录如下所示（这里的示例数据集使用的是places365_standard，可以更换其他的Places2数据集）
+Download the dataset [Places2](http://places2.csail.mit.edu/download.html), and put it in the data folder, the directory is as follows (the example data set here uses places365_standard, you can replace it with other **Places2** dataset)
 
 ```shell
 ├─data
@@ -92,13 +94,13 @@ python test.py --batch_size 8 --pretrained_root "./weights/checkpoint_mask_35.5.
 ├─weights
 ```
 
-之后生成mask数据集，默认是8000张mask
+Then generate the mask dataset, the number of masks is 8000 as default.
 
 ```
 python generate_mask.py
 ```
 
-cmd中切换到工作目录，运行train.py
+Changing to the working directory in cmd, then run `train.py`
 
 ```shell
 python train.py
@@ -106,11 +108,11 @@ python train.py
 
 # Results
 
-实验证明，如果遮掩的部分中间有一些小孔，修复的效果会更好一些
+Experiments have proved that if there are some small holes in the middle of the covered part, the inpainting effect will be better.
 
-下面展示了使用三种不同面积mask的训练结果，从上到下分别是：
+The following shows the training results using three kinds of masks that have different area proportion, from top to bottom:
 
-mask image，original image, predict image, comp image, mask
+> mask image，original image, predict image, comp image, mask
 
 mask：**shadow area: 35.5%**
 
@@ -130,4 +132,10 @@ mask_lightest: **shadow area: 16.8%**
 
 # More
 
-这里只给出了基于python对论文的复现，基于libtorch的复现已经完成，正在写PC端的软件（稍后会开源），之后会尝试将模型部署在Android上
+Here, I only provide the **python-based** re-implementation of the paper. The libtorch-based re-implementation has been completed, and it is being deployed on the PC as a desktop software using **C++**. Soon the model will be tried to be deployed on **Android**.
+
+# Reference
+
+- https://github.com/NVIDIA/partialconv
+- https://github.com/naoto0804/pytorch-inpainting-with-partial-conv
+
