@@ -33,6 +33,11 @@ opt = parser.parse_args()
 
 cudnn.benchmark = True
 
+if not os.path.exists(opt.weights_root):
+    os.mkdir(opt.weights_root)
+if not os.path.exists(opt.output_root):
+    os.mkdir(opt.output_root)
+
 img_mean = np.array([0.485,0.456,0.406])
 img_std = np.array([0.229,0.224,0.225])
 
