@@ -42,7 +42,7 @@ python install -r requirements.txt
 
 # Test
 
-windows环境下，下载预训练权重，[extract code：jw2x](链接：https://pan.baidu.com/s/1P93LDjkaJvnxwkm4LcnCOw )，
+windows环境下，下载预训练权重，[提取码：jw2x](https://pan.baidu.com/s/1P93LDjkaJvnxwkm4LcnCOw )，
 
 ```
 git clone https://github.com/NiceRingNode/PartialConvolution.git
