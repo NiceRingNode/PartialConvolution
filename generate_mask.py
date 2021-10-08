@@ -140,8 +140,7 @@ def generate_mask(h,w,idx):
     # 因为y_comp = mask * y_true + (1 - mask) * y_pred，mask是0.0039，所以y_pred就会
     # 占很大的成分，导致y_comp看起来跟y_pred一样
     img = Image.fromarray(mask * 255).convert('1')
-    #img.save('./data/mask/' + str(idx) + '.png')
-    img.save('./data/ma/' + str(idx) + '.png')
+    img.save('./data/mask/' + str(idx) + '.png')
     return mask
         
 def main():
