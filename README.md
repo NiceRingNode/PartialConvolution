@@ -112,19 +112,19 @@ The following shows the training results using three kinds of masks that have di
 
 > mask image，original image, predict image, comp image, mask
 
-mask：**shadow area: 35.5%**
+mask：**shadow area: 35.5%** batch_size: 8 iter: 175000
 
 ![shadow area: 35.5%](/output/using_35.5.png)
 
 
 
-mask_light: **shadow area: 23.55%**
+mask_light: **shadow area: 23.55%** batch_size: 8 iter: 295000(base on the weights pretrained on mask that has 35.5% shadow)
 
 ![shadow area: 23.55%](/output/using_23.5.png)
 
 
 
-mask_lightest: **shadow area: 16.8%**
+mask_lightest: **shadow area: 16.8%** batch_size: 8 iter: 295000(base on the weights pretrained on mask that has 35.5% shadow)
 
 ![shadow area: 16.8%](/output/using_16.8.png)
 
