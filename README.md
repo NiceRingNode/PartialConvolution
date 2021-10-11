@@ -36,9 +36,9 @@ The works of this re-implementation contains:
   | mask_light    | 23.55%     | √          |
   | mask          | 35.5%      | ×          |
 
-- [x] pytorch weights to libtorch weights
+- [x] Pytorch weights to libtorch weights
 
-- [x] libtorch inference implementation in C++17 (This work will be published as a desktop application.)
+- [x] Libtorch inference implementation in C++17 (This work will be published as a desktop application.)
 
 # Test
 
