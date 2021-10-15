@@ -4,6 +4,9 @@ This is a non-official re-implementation of article: [Image Inpainting for Irreg
 
 The official implementation is [here](https://github.com/NVIDIA/partialconv).
 
+# New
+The Cpp deployment of this algorithm is uploaded, using **Libtorch, Opencv and Qt**. Check [here](https://github.com/NiceRingNode/Inpainting-Cpp-Deployment) and welcome to star.
+
 # Requirements
 
 Python 3.7.7+
