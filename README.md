@@ -1,13 +1,13 @@
-# PartialConvolution-Inpainting
+# 🥑PartialConvolution for Image Inpainting
 
-This is a non-official re-implementation of article: [Image Inpainting for Irregular Holes Using Partial Convolutions](https://arxiv.org/abs/1804.07723)[Liu+, arXiv2018].
+This is a non-official re-implementation of article: [[ECCV 18] Image Inpainting for Irregular Holes Using Partial Convolutions](https://arxiv.org/abs/1804.07723).
 
 The official implementation is [here](https://github.com/NVIDIA/partialconv).
 
-# New
-The Cpp deployment of this algorithm is uploaded, using **Libtorch, Opencv and Qt**. Check [here](https://github.com/NiceRingNode/Inpainting-Cpp-Deployment) and welcome to star.
+## ⭐New
+The Cpp deployment of this algorithm is uploaded, using **Libtorch, OpenCV and QT**. Check [here](https://github.com/NiceRingNode/Inpainting-Cpp-Deployment) and welcome to star.
 
-# Requirements
+## 🌏Requirements
 
 Python 3.7.7+
 
@@ -17,7 +17,7 @@ Pytorch 1.7.0+
 python install -r requirements.txt
 ```
 
-# Work
+## ⛴️Work
 
 The works of this re-implementation contains:
 
@@ -43,7 +43,7 @@ The works of this re-implementation contains:
 
 - [x] Libtorch inference implementation in C++17 (This work will be published as a desktop application.)
 
-# Test
+## 🧀Test
 
 In windows 10, download the pretrained weights, [Extract code：jw2x](https://pan.baidu.com/s/1P93LDjkaJvnxwkm4LcnCOw ), and clone the repository.
 
@@ -77,9 +77,9 @@ python test.py --batch_size 8 --pretrained_root "./weights/checkpoint_mask_35.5.
 
 You can see the inpainting result on **result.png** in the **output folder**.
 
-# Train
+## 🚀Train
 
-## Preprocess
+### Preprocess
 
 Download the dataset [Places2](http://places2.csail.mit.edu/download.html), and put it in the data folder, the directory is as follows (the example data set here uses places365_standard, you can replace it with other **Places2** dataset)
 
@@ -97,17 +97,17 @@ Download the dataset [Places2](http://places2.csail.mit.edu/download.html), and 
 
 Then generate the mask dataset, the number of masks is 8000 as default.
 
-```
+```bash
 python generate_mask.py
 ```
 
 Changing to the working directory in cmd, then run `train.py`
 
-```shell
+```bash
 python train.py
 ```
 
-# Results
+## 📖Results
 
 Experiments have proved that if there are some small holes in the middle of the covered part, the inpainting effect will be better.
 
@@ -121,21 +121,21 @@ mask：**shadow area: 35.5%** batch_size: 8 iter: 175000
 
 
 
-mask_light: **shadow area: 23.55%** batch_size: 8 iter: 295000(base on the weights pretrained on mask that has 35.5% shadow)
+mask_light: **shadow area: 23.55%** batch_size: 8 iter: 295000 (based on the weights pretrained on mask that has 35.5% shadow)
 
 ![shadow area: 23.55%](/output/using_23.5.png)
 
 
 
-mask_lightest: **shadow area: 16.8%** batch_size: 8 iter: 295000(base on the weights pretrained on mask that has 35.5% shadow)
+mask_lightest: **shadow area: 16.8%** batch_size: 8 iter: 295000 (based on the weights pretrained on mask that has 35.5% shadow)
 
 ![shadow area: 16.8%](/output/using_16.8.png)
 
-# More
+## 🌲More
 
 Here, I only provide the **python-based** re-implementation of the paper. The libtorch-based re-implementation has been completed, and it is being deployed on the PC as a desktop software using **C++**. Soon the model will be tried to be deployed on **Android**.
 
-# Reference
+## 🔖Reference
 
 - https://github.com/NVIDIA/partialconv
 - https://github.com/naoto0804/pytorch-inpainting-with-partial-conv
